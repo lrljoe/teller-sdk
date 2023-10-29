@@ -17,6 +17,7 @@ class TellerClientTest extends BaseTest
        $teller = new TellerClient($token);
        $result = $teller->listAccounts();
        $this->assertIsArray($result);
+       // Test
    }
 
     public function testTellerTestTokenIsDefined()
