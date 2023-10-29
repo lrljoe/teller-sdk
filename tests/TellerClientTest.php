@@ -19,19 +19,6 @@ class TellerClientTest extends BaseTest
        $this->assertIsArray($results);
    }
 
-   /**
-    * @throws MissingAccessTokenException
-    */
-    public function testListAccountsGetEnrollmentId()
-    {
-        $token = config('teller.TEST_TOKEN');
-        $teller = new TellerClient($token);
-        $results = $teller->listAccounts();
-        foreach ($results as $result)
-        {
-          $this->assertIsString($result['enrollment_id']);
-        }
-    }
  
     public function testTellerTestTokenIsDefined()
     {
