@@ -8,6 +8,14 @@ use TellerSDK\TellerClient;
 class TellerClientTest extends BaseTest
 {
 
+    public function testConfigMatchesEnv()
+    {
+        $envToken = getenv('TELLER_TEST_TOKEN');
+        $confToken = config('teller.TEST_TOKEN');
+
+        $this->assertSame($envToken,$confToken);
+    }
+
    /**
     * @throws MissingAccessTokenException
     */
@@ -16,7 +24,7 @@ class TellerClientTest extends BaseTest
        $token = config('teller.TEST_TOKEN');
        $teller = new TellerClient($token);
        $result = $teller->listAccounts();
-
+       $this->assertIsArray($result);
    }
 
     public function testTellerTestTokenIsDefined()
